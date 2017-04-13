@@ -1,6 +1,8 @@
 OnlineBookShop::Application.routes.draw do
-  get "home/index"
+  resources :posts do
+   resources :comments
+  end
 
-  get "/", to: 'welcome#index'
-  root :to => 'welcome#index'
+
+  root :to => 'home#index'
 end
