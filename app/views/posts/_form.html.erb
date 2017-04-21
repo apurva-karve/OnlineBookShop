@@ -1,4 +1,5 @@
-<%= form_for(@post) do |f| %> #Creates HTML form. Sets the appropriate action.
+<% @post.tags.build %> <!-- It makes sure there is a new tag ready to have its name filled by the user -->
+<%= form_for(@post) do |post_form| %> <!-- Creates HTML form. Sets the appropriate action.-->
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -12,18 +13,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %> #Tell rails to create a text input for the form and hook up the name attribute of the object.
+    <%= post_form.label :name %><br />
+    <%= post_form.text_field :name %> #Tell rails to create a text input for the form and hook up the name attribute of the object.
   </div>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= post_form.label :title %><br />
+    <%= post_form.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= post_form.label :content %><br />
+    <%= post_form.text_area :content %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= post_form.submit %>
   </div>
+
+    <h2>Tags</h2>
+    <%= render :partial => 'tags/form',
+                :locals =>{:form =>post_form}
+    %>
+
 <% end %>
