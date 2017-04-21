@@ -23,6 +23,12 @@ development:
 #  database: db/test.sqlite3
 #  pool: 5
 #  timeout: 5000
+test:
+  adapter: mysql2
+  username : root
+  password : password
+  socket: /tmp/mysql.sock
+  database : online_book_shop
 #
 #production:
 #  adapter: sqlite3

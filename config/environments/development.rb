@@ -34,4 +34,10 @@ OnlineBookShop::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #For displaying error pages
+  config.consider_all_requests_local = false
+
+  #Devise gem default url
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
